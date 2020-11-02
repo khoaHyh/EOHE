@@ -5,7 +5,7 @@
 Player = Class{}
 
 local WALKING_SPEED = 115
-local JUMP_VELOCITY = 450
+local JUMP_VELOCITY = 1000
 
 function Player:init(map)
     
