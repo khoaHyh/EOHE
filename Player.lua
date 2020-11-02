@@ -5,7 +5,7 @@
 Player = Class{}
 
 local WALKING_SPEED = 115
-local JUMP_VELOCITY = 1000
+local JUMP_VELOCITY = 500
 
 function Player:init(map)
     
@@ -369,6 +369,7 @@ function Player:resolveCollision(collidable)
     end
 end
 
+-- check if the player is at the start position to allow timer reset
 function Player:startPositionCheck()
     if self.x >= 145 and self.x <= 240 and self.y == 612 and 
         love.keyboard.wasPressed('q') then
@@ -377,6 +378,7 @@ function Player:startPositionCheck()
     end
 end
 
+-- check if the player is at the finish to potentially log personal best
 function Player:finishPositionCheck()
     if self.x >= 2246 and self.x <= 2349 and self.y == 292 then
         finishPosition = true

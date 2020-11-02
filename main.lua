@@ -103,6 +103,7 @@ function love.update(dt)
         seconds = 0
     end
 
+    -- resets timer
     if startPosition then
         seconds = 0
         minutes = 0
@@ -110,6 +111,7 @@ function love.update(dt)
         startPosition = false
     end
 
+    -- sets personal best
     if finishPosition then
         if PB_minutes == 0 and PB_seconds == 0 then
             PB_minutes = minutes
