@@ -19,9 +19,6 @@ love.graphics.setDefaultFilter('nearest', 'nearest')
 -- an object to contain our map data
 map = Map()
 
--- fps display positioning on the X axis
-local fps_x_pos = 0
-
 -- timer variables
 local seconds = 0
 local minutes = 0
@@ -162,12 +159,11 @@ function love.draw()
 end
 
 function displayFPS()
-    fps_x_pos = math.floor(-map.camX + 0.5) * -1 + 30
-    
     -- simple FPS display across all states
     love.graphics.setFont(defaultFont)
     love.graphics.setColor(0, 255, 0, 255)
-    love.graphics.print('FPS: ' .. tostring(love.timer.getFPS()), fps_x_pos, 70)
+    -- love.graphics.print('FPS: ' .. tostring(love.timer.getFPS()), map.camX + 30, 70)
+    love.graphics.print(string.format('FPS: %d', math.floor(1.0 / love.timer.getDelta())), map.camX + 30, 70)
 end
 
 function displayTime()

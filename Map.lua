@@ -52,7 +52,7 @@ function Map:init()
     self.tiles = {}
 
     -- applies positive Y influence on anything affected
-    self.gravity = 25
+    self.gravity = 30
 
     -- Y-coordinate of the ground
     GROUND_LEVEL = self.mapHeight / 2 + 10
