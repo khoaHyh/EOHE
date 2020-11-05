@@ -3,7 +3,9 @@ Escape On Hallow's Eve
 
 This game was created as a final project for the CS50: Intro to Computer Science 2020 course.
 
-You play as Timmy, a zombie who finds himself stuck in a side scrolling graveyard on Hallow's Eve! To get out, he must reach the sacred tombstone through the "Undead Course" and lift this restraint (which may or may not allow him to explore the world in a sequel?!?). He may also rescue his friends by restarting the Undead Course and completing it (maybe under a minute?) to bring along his two other friends Georgie and Bill.
+I drew inspiration from Maplestory, a nostalgic 2D side scrolling MMORPG that I started playing over a decade ago and sometimes revisit. One of the well-known challenges in the game were 'jump quests' which were essentially obstacle courses that required precision in timing and movement to reach a finish point to receive a reward.
+
+In Escape On Hallow's Eve you play as Timmy, a zombie who finds himself stuck in a side scrolling graveyard on Hallow's Eve! To get out, he must reach the sacred tombstone through the "Undead Course" and lift this restraint (which may or may not allow him to explore the world in a sequel?!?). He may also rescue his friends by restarting the Undead Course and completing it (maybe under a minute?) to bring along his two other friends Georgie and Bill.
 
 * **How to run:**
   1. Download the project as a zip file.

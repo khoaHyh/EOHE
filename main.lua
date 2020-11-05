@@ -224,13 +224,13 @@ function displayNewPB()
             love.graphics.setFont(unlockFont)
             love.graphics.setColor(255, 215 / 255, 0, 255)
             love.graphics.print("You've unlocked Georgie! Press '2' to select the new skin and '1' to select the original", 
-                map.camX + 240, 200)
+                map.camX + 250, 200)
         end
         if print2ndUnlock then
             love.graphics.setFont(unlockFont)
             love.graphics.setColor(255, 215 / 255, 0, 255)
             love.graphics.print("You've unlocked Bill! Press '3' to select the new skin! You can swap between all your unlocked skins.", 
-                map.camX + 150, 220)
+                map.camX + 190, 220)
         end
     end
 end
