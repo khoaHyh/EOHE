@@ -270,6 +270,8 @@ function Player:update(dt)
     self:finishPositionCheck()
 
     self:showHide()
+    self.sounds['jump']:setVolume(0.5)
+    self.sounds['hit']:setVolume(0.5)
 end
 
 -- jumping and block hitting logic

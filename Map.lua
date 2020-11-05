@@ -213,7 +213,7 @@ function Map:init()
 
     -- start the background music
     self.music:setLooping(true)
-    self.music:setVolume(0.5)
+    self.music:setVolume(0.1)
     self.music:play()
 end
 
