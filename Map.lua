@@ -38,6 +38,7 @@ local SCROLL_SPEED = 62
 -- constructor for our map object
 function Map:init()
 
+    -- source for graveyard tileset 'https://www.gameart2d.com/free-graveyard-platformer-tileset.html'
     -- graveyard tiles
     self.graveyardTiles = love.graphics.newImage('/graphics/graveyardTiles.png')
     self.graveyardTileSprites = generateQuads(self.graveyardTiles, 128, 128)
@@ -50,6 +51,10 @@ function Map:init()
     self.mapWidth = 80
     self.mapHeight = 24
     self.tiles = {}
+
+    -- music is OST from Maplestory
+    -- used 'maplestory-music.github.io/' to find the song
+    self.music = love.audio.newSource('/music/MS-BGM-Haunted-House.wav', 'static')
 
     -- applies positive Y influence on anything affected
     self.gravity = 30
@@ -205,6 +210,10 @@ function Map:init()
         -- advance to the next vertical scan line
         x = x + 1
     end
+
+    -- start the background music
+    self.music:setLooping(true)
+    self.music:play()
 end
 
 -- return whether a given tile is collidable
@@ -337,9 +346,6 @@ function Map:render()
     love.graphics.draw(self.graveyardObjects, skeleton, 71.7 * self.tileWidth,
         (GROUND_LEVEL - 10) * self.tileHeight, 0, 0.5, 0.5)
 
-    -- render player onto map
-    self.player:render()
-
     -- render moving objects onto map
     movingObj1:render()
     movingObj2:render()
@@ -348,4 +354,7 @@ function Map:render()
     movingObj5:render()
     movingObj6:render()
     movingObj7:render()
+
+    -- render player onto map
+    self.player:render()
 end
