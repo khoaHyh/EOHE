@@ -4,8 +4,8 @@
 
 Player = Class{}
 
-local WALKING_SPEED = 135
-local JUMP_VELOCITY = 540
+local WALKING_SPEED = 125
+local JUMP_VELOCITY = 510
 local showing = false
 
 function Player:init(map)
@@ -143,10 +143,13 @@ function Player:init(map)
             -- while we're idle, check if there's a tile directly beneath us (such as a gap)
             -- if there is a gap then set a falling animation which is the same jumping
             if not self.map:collides(self.map:tileAt(self.x, self.y + self.height)) and
-                not self.map:collides(self.map:tileAt(self.x + self.width - 1, self.y + self.height)) then
+                not self.map:collides(self.map:tileAt(self.x + self.width - 1, self.y + self.height)) and 
+                not self.map:collides(self.map:tileAt(self.x + self.width / 2 - 1, self.y + self.height)) then
                 
                 -- if so, reset velocity and position and change state
                 self.state = 'jumping'
+            else
+                self.map.gravity = 0
             end
         end,
         ['walking'] = function(dt)
@@ -177,11 +180,14 @@ function Player:init(map)
             -- while we're walking, check if there's a tile directly beneath us (such as a gap)
             -- if there is a gap then set a falling animation which is the same jumping
             if not self.map:collides(self.map:tileAt(self.x, self.y + self.height)) and
-                not self.map:collides(self.map:tileAt(self.x + self.width - 1, self.y + self.height)) then
+                not self.map:collides(self.map:tileAt(self.x + self.width - 1, self.y + self.height)) and 
+                not self.map:collides(self.map:tileAt(self.x + self.width / 2 - 1, self.y + self.height)) then
                 
                 -- if so, reset velocity and position and change state
                 self.state = 'jumping'
                 self.animation = self.animations['jumping']
+            else
+                self.map.gravity = 0
             end
         end,
         ['jumping'] = function(dt)
@@ -198,14 +204,12 @@ function Player:init(map)
                 self.dx = WALKING_SPEED
             end
 
-            -- apply map's gravity before y velocity
-            self.dy = self.dy + self.map.gravity
-
             -- check if there's a tile directly beneath us
             for coordX = self.x, self.x + self.width - 1 do
                 if self.map:collides(self.map:tileAt(coordX, self.y + self.height)) then
 
                     -- if so, reset velocity and position and change state
+                    self.map.gravity = 0
                     self.y = (self.map:tileAt(self.x, self.y + self.height).y - 1) * self.map.tileHeight - self.height
                     self.dy = 0
                     self.state = 'idle'
@@ -264,7 +268,7 @@ function Player:update(dt)
     self:calculateJumps()
 
     -- apply velocity
-    self.y = self.y + self.dy * dt
+    self.y = self.y + (self.dy + self.map.gravity) * dt
 
     self:startPositionCheck()
     self:finishPositionCheck()
@@ -287,6 +291,7 @@ function Player:calculateJumps()
 
             -- reset y velocity
             self.dy = 0
+            self.y = self.map:tileAt(self.x, self.y).y * self.map.tileWidth
             local playHit = false
             playHit = true 
 
@@ -376,6 +381,7 @@ function Player:resolveCollision(collidable, dt)
             if self.y + self.height / 2 < collidable.y + collidable.height / 2 then
                 -- player bottom collision
                 -- self.dy is crucial in keeping the player on the platform
+                self.map.gravity = 0
                 self.dy = collidable.dy
                 self.y = collidable.y - self.height
                 platformDx = collidable.dx
@@ -407,6 +413,7 @@ function Player:resolveCollision(collidable, dt)
                 end
             else
                 -- player top collision
+                self.dy = 0
                 self.y = collidable.y + collidable.height
                 playHit = true
             end

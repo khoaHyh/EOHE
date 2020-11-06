@@ -4,7 +4,7 @@
 MovingObj = Class{}
 
 -- moving object speed
-local OBJ_SPEED = 135
+local OBJ_SPEED = 125
 
 function MovingObj:init(map, x, y, width, height, tile)
     self.x = x

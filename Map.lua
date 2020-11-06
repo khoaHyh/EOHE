@@ -57,7 +57,8 @@ function Map:init()
     self.music = love.audio.newSource('/music/MS-BGM-Haunted-House.wav', 'static')
 
     -- applies positive Y influence on anything affected
-    self.gravity = 28
+    self.gravity = 0
+    self.weight = 1300
 
     -- Y-coordinate of the ground
     GROUND_LEVEL = self.mapHeight / 2 + 10
@@ -237,6 +238,9 @@ end
 
 -- function to update camera offset with delta time
 function Map:update(dt)
+    -- gravity behaves with delta time to have consistency across all framerates
+    self.gravity = self.gravity + self.weight * dt
+
     self.player:update(dt)
     self.player:resolveCollision(movingObj1)
     self.player:resolveCollision(movingObj2)
