@@ -20,6 +20,7 @@ In Escape On Hallow's Eve you play as Timmy, a zombie who finds himself stuck in
     * Press 'Spacebar' to jump
     * Press 'h' to toggle character collision box
     * To reset the timer, you must position your character at the wooden sign that points right and press 'q'
+    * If you beat the jump quest once, you will unlock 'Georgie'. If you beat the jumpquest under 1 minute you will unlock 'Bill'.
     * Once you have unlocked a skin, you may switch between them by pressing '1', '2', or '3' depending on which skins you have unlocked. Pressing '1' will select the default skin.
 
 If you're proud of your time, you may add a screenshot to the 'fastest-times' folder and send in a pull request to get on the list! Other than that, have fun and feel free to comment any issues.
