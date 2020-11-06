@@ -29,4 +29,4 @@ If you're proud of your time, you may add a screenshot to the 'fastest-times' fo
 
 [Source for graveyard tileset](https://www.gameart2d.com/free-graveyard-platformer-tileset.html "Graveyard Tileset")
 
-[Source for music](maplestory-music.github.io/ "OST for Maplestory")
+[Source for music](https://github.com/maplestory-music/maplestory-music.github.io "OST for Maplestory")
