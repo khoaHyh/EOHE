@@ -57,7 +57,7 @@ function Map:init()
     self.music = love.audio.newSource('/music/MS-BGM-Haunted-House.wav', 'static')
 
     -- applies positive Y influence on anything affected
-    self.gravity = 30
+    self.gravity = 28
 
     -- Y-coordinate of the ground
     GROUND_LEVEL = self.mapHeight / 2 + 10
